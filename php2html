@@ -42,7 +42,7 @@ and complete HTML by replacing markups as needed.
 #########################################################################################################
 
 import os,re,sys,unicodedata,platform,subprocess,shutil,mmap
-import imp,random
+import importlib,random
 try:
     import readline
 except ImportError:
@@ -289,7 +289,7 @@ def help():
 #########################################################################################################
 def processHTML(data,outfilepath):
     data=data.encode("unicode-escape");
-    out= re.findall( b"<[\s\\\\t\\\\n]*a[\s\\\\t\\\\n]+[][\\\\\s\w\\\\./+@\"'=:,;~&^$-]*[\s\\\\t\\\\n]*href[\s\\\\t\\\\n]*=[\s\\\\t\\\\n]*\"[\s\\\\t\\\\n]*(?!http://)(?!www.)[][\\\\\s\w\\\\./+@\"':,;~%&^$-]+\.php", data);
+    out= re.findall( rb"<[\s\\\\t\\\\n]*a[\s\\\\t\\\\n]+[][\\\\\s\w\\\\./+@\"'=:,;~&^$-]*[\s\\\\t\\\\n]*href[\s\\\\t\\\\n]*=[\s\\\\t\\\\n]*\"[\s\\\\t\\\\n]*(?!http://)(?!www.)[][\\\\\s\w\\\\./+@\"':,;~%&^$-]+\.php", data);
     data=data.decode("unicode-escape");
     if out:
       for match in out:
